@@ -7,6 +7,27 @@ POST http://localhost:3000/assets
 Content-Type: application/json
 
 {
-  "id": "123",
-  "symbol": "BTC"
+  "id": "456",
+  "symbol": "XYZ"
 }
+
+###
+GET http://localhost:3000/assets
+
+
+
+###
+POST http://localhost:3000/orders
+Content-Type: application/json
+
+{
+  "assetId": "123",
+  "price": 33.33
+
+}
+
+###
+GET http://localhost:3000/orders
+
+
+

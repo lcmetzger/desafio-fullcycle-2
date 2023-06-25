@@ -8,4 +8,8 @@ export class AssetsService {
   create(data: { id: string; symbol: string }) {
     return this.prismaService.asset.create({ data });
   }
+
+  getAll() {
+    return this.prismaService.asset.findMany();
+  }
 }

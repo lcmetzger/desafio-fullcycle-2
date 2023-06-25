@@ -1,4 +1,9 @@
-FROM mongo:4
+FROM mongo:5.0.17
+
+ENV MONGO_INITDB_ROOT_USERNAME root
+ENV MONGO_INITDB_ROOT_PASSWORD root
+ENV MONGO_REPLICA_PORT 27017
+ENV MONGO_REPLICA_HOST localhost
 
 # we take over the default & start mongo in replica set mode in a background task
 ENTRYPOINT mongod --port $MONGO_REPLICA_PORT --replSet rs0 --bind_ip 0.0.0.0 & MONGOD_PID=$!; \

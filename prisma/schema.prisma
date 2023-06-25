@@ -12,6 +12,21 @@ datasource db {
 }
 
 model Asset {
-  id     String @id @map("_id")
+  id     String  @id @map("_id")
   symbol String
+  Order  Order[]
+}
+
+model Order {
+  id      String      @id @default(auto()) @map("_id") @db.ObjectId
+  Asset   Asset       @relation(fields: [assetId], references: [id])
+  assetId String
+  price   Float
+  status  OrderStatus
+}
+
+enum OrderStatus {
+  OPEN
+  PENDING
+  CLOSED
 }
