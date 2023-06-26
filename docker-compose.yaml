@@ -8,44 +8,11 @@ services:
     volumes:
       - .:/home/node/app
 
-  # db:
-  #   # image: bitnami/mongodb:5.0.17
-  #   image: bitnami/mongodb:latest
-  #   platform: linux/amd64
-  #   ports:
-  #     - "27017:27017"
-  #   volumes:
-  #     - mongodb_data:/bitnami/mongodb
-  #   environment:
-  #     MONGODB_ROOT_USERNAME: nest
-  #     MONGODB_ROOT_PASSWORD: nest
-  #     MONGODB_REPLICA_SET_MODE: primary
-  #     MONGODB_REPLICA_SET_KEY: 123456
-  #     MONGODB_DATABASE: nest
-
-  # mongo:
-  #   build: ./mongodb_rs
-  #   restart: always
-  #   environment:
-  #     MONGO_INITDB_ROOT_USERNAME: mongo
-  #     MONGO_INITDB_ROOT_PASSWORD: example
-  #     MONGO_INITDB_DATABASE: mongo
-  #     MONGO_REPLICA_HOST: localhost
-  #     MONGO_REPLICA_PORT: 27017
-  #   ports:
-  #     - "27017:27017"
-
-
   db:
-      # instead of using image bitnami/mongodb:5.0.17 (it's not working), this image builds a replicaset in its own Dockerfile
-      build: ./mongo_rs
-      restart: always
-      environment:
-        MONGO_INITDB_ROOT_PASSWORD: root
-        MONGO_REPLICA_HOST: db
-        MONGODB_DATABASE: nest
-
-# volumes:
-#   mongodb_data:
-#     driver: local
+    build: ./mongo_rs
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_REPLICA_HOST: db
+      MONGODB_DATABASE: nest
 
